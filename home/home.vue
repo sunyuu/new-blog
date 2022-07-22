@@ -30,7 +30,7 @@ const blogList = [
     title: '在JavaScript中引入类型的提案（翻译）',
     date: '2022-3-10',
     tag: ['Type', 'JavaScript', 'TypeScript'],
-    link: '../blog/article/article-2022-3-10'
+    link: '/blog/article/article-2022-3-10'
   }
 ]
 
