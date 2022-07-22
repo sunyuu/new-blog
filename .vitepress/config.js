@@ -5,5 +5,5 @@ export default defineConfig({
   themeConfig: {
     siteTitle: "Suny's Blog🚀"
   },
-  base: 'new-blog'
+  base: '/new-blog/'
 })
