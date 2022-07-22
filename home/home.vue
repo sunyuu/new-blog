@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useData, useRouter } from 'vitepress'
+import { useData, useRouter, withBase } from 'vitepress'
  
 const router = useRouter()
 
@@ -35,7 +35,7 @@ const blogList = [
 ]
 
 const itemClick = (item) => {
-  router.go(item.link)
+  router.go(withBase(item.link))
 }
 
 </script>
