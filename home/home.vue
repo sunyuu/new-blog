@@ -7,7 +7,7 @@
               <div class="title">{{item.title}}</div>
               <div class="date">{{item.date}}</div>
               <div class="tag">
-                <span  v-for="tag in item.tag" :key="tag">{{tag}}</span>
+                <span  v-for="tag in item.tags" :key="tag">{{tag}}</span>
               </div>
             </div>
             <div class="right">
@@ -22,17 +22,20 @@
 
 <script lang="ts" setup>
 import { useData, useRouter, withBase } from 'vitepress'
- 
+import dayjs from 'dayjs'
+
+const { theme } = useData()
+
 const router = useRouter()
 
-const blogList = [
-  {
-    title: '在JavaScript中引入类型的提案（翻译）',
-    date: '2022-3-10',
-    tag: ['Type', 'JavaScript', 'TypeScript'],
-    link: '/blog/article/article-2022-3-10'
+const blogList = theme.value.article.map(item => {
+  return {
+    title: item.title,
+    tags: item.tags,
+    link: item.path,
+    date: dayjs(item.date).format('YYYY-MM-DD')
   }
-]
+})
 
 const itemClick = (item) => {
   router.go(withBase(item.link))
@@ -55,6 +58,7 @@ const itemClick = (item) => {
   background: var(--vp-c-bg-mute);
   box-shadow: var(--vt-shadow-2);
   display: flex;
+  margin-top: 20px;
 }
 .blog-list li .left {
   flex-grow: 1;
